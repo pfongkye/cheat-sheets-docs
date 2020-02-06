@@ -1,87 +1,86 @@
 module.exports = {
-  title: 'My Cheat Sheets',
-  tagline: 'The tagline of my site',
-  url: 'https://pfongkye.github.io',
-  baseUrl: '/',
-  favicon: 'img/favicon.ico',
-  organizationName: 'pfongkye', // Usually your GitHub org/user name.
-  projectName: 'cheat-sheets-docs', // Usually your repo name.
+  title: "My Cheat Sheets",
+  tagline: "The tagline of my site",
+  url: "https://pfongkye.github.io",
+  baseUrl: "/",
+  favicon: "img/favicon.ico",
+  organizationName: "pfongkye", // Usually your GitHub org/user name.
+  projectName: "pfongkye.github.io", // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'My Cheat Sheets',
+      title: "My Cheat Sheets",
       logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
+        alt: "My Site Logo",
+        src: "img/logo.svg"
       },
       links: [
-        { to: 'docs/doc1', label: 'Docs', position: 'left' },
-        { to: 'blog', label: 'Blog', position: 'left' },
+        { to: "docs/doc1", label: "Docs", position: "left" },
+        { to: "blog", label: "Blog", position: "left" },
         {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
+          href: "https://github.com/facebook/docusaurus",
+          label: "GitHub",
+          position: "right"
+        }
+      ]
     },
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Cheat Sheets',
-              to: 'docs/doc1',
-            },
-          ],
+              label: "Cheat Sheets",
+              to: "docs/doc1"
+            }
+          ]
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/docusaurus"
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-          ],
+              label: "Discord",
+              href: "https://discordapp.com/invite/docusaurus"
+            }
+          ]
         },
         {
-          title: 'Social',
+          title: "Social",
           items: [
             {
-              label: 'Blog',
-              to: 'blog',
+              label: "Blog",
+              to: "blog"
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: "GitHub",
+              href: "https://github.com/facebook/docusaurus"
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
+              label: "Twitter",
+              href: "https://twitter.com/docusaurus"
+            }
+          ]
+        }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-    },
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
+    }
   },
   presets: [
     [
-      '@docusaurus/preset-classic',
+      "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl: "https://github.com/facebook/docusaurus/edit/master/website/"
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      },
-    ],
-  ],
+          customCss: require.resolve("./src/css/custom.css")
+        }
+      }
+    ]
+  ]
 };
