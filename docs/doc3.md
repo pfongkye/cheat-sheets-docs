@@ -1,5 +1,5 @@
 ---
-id: doc3
+id: doc_misc
 title: Miscellaneous
 ---
 

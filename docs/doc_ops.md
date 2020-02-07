@@ -1,5 +1,5 @@
 ---
-id: doc2
+id: doc_ops
 title: Kubernetes And Friends
 sidebar_label: Ops
 ---

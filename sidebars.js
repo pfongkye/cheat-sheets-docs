@@ -7,7 +7,7 @@
 
 module.exports = {
   someSidebar: {
-    "Cheat Sheets": ["doc1", "doc2", "doc3"],
+    "Cheat Sheets": ["doc_web", "doc_languages", "doc_ops", "doc_misc"],
     Features: ["mdx"]
   }
 };

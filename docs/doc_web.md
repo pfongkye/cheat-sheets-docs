@@ -1,5 +1,5 @@
 ---
-id: doc1
+id: doc_web
 title: Web Development
 sidebar_label: Web
 ---
