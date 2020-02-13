@@ -27,3 +27,4 @@ jobs:
         CI: true
         GIT_USER: p.fongkye
         GITHUB_TOKEN: d2d526c549cfed2183dc5f07ba1e8bef13bcb9ac
+        USE_SSH: true
