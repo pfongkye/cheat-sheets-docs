@@ -11,3 +11,5 @@ sidebar_label: Languages
 ## JavaScript
 
 [JavaScript](https://eloquentjavascript.net/index.html)
+[You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+[30 seconds of code](https://www.30secondsofcode.org/)
