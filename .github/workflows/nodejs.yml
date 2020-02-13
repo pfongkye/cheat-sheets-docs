@@ -26,4 +26,4 @@ jobs:
       env:
         CI: true
         GIT_USER: p.fongkye
-        GIT_PERSO_TOKEN: {{ secret.GIT_PERSO_TOKEN }}
+        GIT_PERSO_TOKEN: ${{ secret.GIT_PERSO_TOKEN }}
