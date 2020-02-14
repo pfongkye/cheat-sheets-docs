@@ -18,4 +18,4 @@ env:
   my_secret: ${{ secrets.my_secret }}
 ```
 ## REST
-[Restful API](https://restfulapi.net/)
+[RESTful API](https://restfulapi.net/)
