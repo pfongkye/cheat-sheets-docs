@@ -17,3 +17,5 @@ if set on given repository (see settings).
 env:
   my_secret: ${{ secrets.my_secret }}
 ```
+## REST
+[Restful API](https://restfulapi.net/)
