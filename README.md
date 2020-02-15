@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/pfongkye/cheat-sheets-docs/workflows/Node.js%20CI/badge.svg)
+
 # Website
 
 This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
