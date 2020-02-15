@@ -8,6 +8,14 @@
       ]
     }
   ],
+  "sitemap_urls": [
+    "https://pfongkye.github.io/sitemap.xml"
+  ],
+  "sitemap_alternate_links": true,
+  "stop_urls": [
+    "/help",
+    "/users"
+  ],
   "selectors": {
     "lvl0": {
       "selector": "//*[contains(@class,'navGroups')]//*[contains(@class,'navListItemActive')]/preceding::h3[1]",
