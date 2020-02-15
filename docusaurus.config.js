@@ -24,7 +24,7 @@ module.exports = {
       ]
     },
     algolia: {
-      apiKey: "1850d5d0cf473ba9d84ee725e2757d40",
+      apiKey: "8a95fdfff7c5a485cfc279a9503a6287",
       indexName: "CheatSheets"
     },
     footer: {
