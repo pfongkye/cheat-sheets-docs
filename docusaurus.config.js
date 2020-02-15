@@ -23,6 +23,10 @@ module.exports = {
         }
       ]
     },
+    algolia: {
+      apiKey: "1850d5d0cf473ba9d84ee725e2757d40",
+      indexName: "CheatSheets"
+    },
     footer: {
       style: "dark",
       links: [
