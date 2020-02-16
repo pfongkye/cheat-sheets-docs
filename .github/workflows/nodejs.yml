@@ -27,3 +27,9 @@ jobs:
         CI: true
         GIT_USER: p.fongkye
         GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
+    - name: DocSearch crawling
+      uses: algolia/docsearch-scraper:v1.6.0
+    - run: ./docsearch docker:run ./docsearch.config.json
+      env:
+        APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+        API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
