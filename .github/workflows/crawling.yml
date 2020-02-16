@@ -9,7 +9,9 @@ jobs:
     steps:
       - name: DocSearch Scraper
         run: |
-          ls
+          ls -l
+          cd /root
+          ls -l
         env:
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
