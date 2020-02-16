@@ -5,16 +5,11 @@ on: [push]
 jobs:
   crawling: 
     runs-on: [ubuntu-latest]
-    container: 
-      image: algolia/docsearch-scraper:v1.6.0
-      volumes:
-        - ./docsearch.config.json:/root/docsearch.config.json
     steps:
       - name: DocSearch Scraper
-        run: | 
-          cd /root
-          ls -l
-          pipenv run python -m src.index ./docsearch.config.json
+        uses: docker://algolia/docsearch-scraper:v1.6.0
+        with:
+          args: ./docsearch.config.json
         env:
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }} 
