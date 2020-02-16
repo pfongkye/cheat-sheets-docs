@@ -1,0 +1,15 @@
+name: Node.js CI
+
+on: [push]
+
+jobs:
+  crawling: 
+    runs-on: [ubuntu-latest]
+    container: algolia/docsearch-scraper:v1.6.0
+    steps:
+      - name: DocSearch Scraper
+        run: |
+          ls
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
