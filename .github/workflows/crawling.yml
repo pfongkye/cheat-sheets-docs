@@ -6,10 +6,10 @@ jobs:
   crawling: 
     runs-on: [ubuntu-latest]
     steps:
-      - name: DocSearch Scraper
-        uses: docker://algolia/docsearch-scraper:v1.6.0
+      - name: Docsearch Scraper
+        uses: Embraser01/docsearch-scraper-action@0.0.1
         with:
-          args: ./docsearch.config.json
+          args: run ./docsearch.config.json
         env:
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }} 
