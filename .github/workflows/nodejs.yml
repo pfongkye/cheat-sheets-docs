@@ -30,11 +30,11 @@ jobs:
         CI: true
         GIT_USER: p.fongkye
         GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
-    - uses: .github/actions/docsearch-crawl/action
     - name: Hello world action step
       id: hello
+      uses: .github/actions/docsearch-crawl/action
       with:
-        who-to-greet: 'PFK'
+        who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
