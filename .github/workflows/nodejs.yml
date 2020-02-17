@@ -32,7 +32,7 @@ jobs:
         GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
     - name: Hello world action step
       id: hello
-      uses: ./.github/actions/docsearch-crawl/action
+      uses: ./.github/actions/docsearch-crawl
       with:
         who-to-greet: 'Mona the Octocat'
     # Use the output from the `hello` step
