@@ -35,7 +35,7 @@ module.exports = {
           items: [
             {
               label: "Cheat Sheets",
-              to: "docs/doc1"
+              to: "docs/doc_web"
             }
           ]
         },
