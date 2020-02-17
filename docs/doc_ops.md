@@ -33,7 +33,7 @@ On password change, restart docker for windows (to avoid issues with shared driv
 ```cmd
 docker run -it <DOCKER_IMG> /bin/bash
 ```
-If an entrypoint is defined, use the following command:
+If an entrypoint is defined in `Dockerfile`, use the following command:
 ```cmd
 docker run -it --entrypoint=/bin/bash <DOCKER_IMG>
 ```
