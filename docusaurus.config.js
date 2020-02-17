@@ -80,7 +80,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/facebook/docusaurus/edit/master/website/"
+          editUrl: "https://github.com/pfongkye/cheat-sheets-docs/edit/master/"
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")
