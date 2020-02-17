@@ -19,3 +19,10 @@ env:
 ```
 ## REST
 [RESTful API](https://restfulapi.net/)
+
+## Git
+To give executable mode to a given file:
+```git
+git update-index --chmod=+x <file>
+```
+
