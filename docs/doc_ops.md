@@ -28,3 +28,12 @@ Remove refresh token from .kube/config on password change. Remove also the lines
 ## Docker
 
 On password change, restart docker for windows (to avoid issues with shared drives, mounting, etc.)
+
+### Bash in Container
+```cmd
+docker run -it <DOCKER_IMG> /bin/bash
+```
+If an entrypoint is defined, use the following command:
+```cmd
+docker run -it --entrypoint=/bin/bash <DOCKER_IMG>
+```
