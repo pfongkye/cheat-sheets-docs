@@ -15,7 +15,6 @@ module.exports = {
       },
       links: [
         { to: "docs/doc_web", label: "Docs", position: "left" },
-        { to: "blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/pfongkye/cheat-sheets-docs",
           label: "GitHub",
@@ -57,12 +56,8 @@ module.exports = {
           title: "Social",
           items: [
             {
-              label: "Blog",
-              to: "blog"
-            },
-            {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus"
+              href: "https://github.com/pfongkye/cheat-sheets-docs"
             },
             {
               label: "Twitter",
