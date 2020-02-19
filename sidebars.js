@@ -8,7 +8,7 @@
 module.exports = {
   someSidebar: {
     "Cheat Sheets": ["doc_web", "doc_languages", "doc_ops", "doc_misc"],
-    "Live Learning":["doc_interactive_learning],
+    "Live Learning":["doc_interactive_learning"],
     Features: ["mdx"]
   }
 };
