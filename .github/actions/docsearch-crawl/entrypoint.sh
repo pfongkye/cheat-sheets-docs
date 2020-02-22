@@ -2,5 +2,5 @@
 
 echo "Hello $1"
 cd /root
-ls -list
+pipenv install requests
 pipenv run python -m src.index
