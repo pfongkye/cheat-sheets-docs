@@ -30,15 +30,10 @@ jobs:
         CI: true
         GIT_USER: p.fongkye
         GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
-    - name: Hello world action step
+    - name: Docsearch crawl
       id: hello
       uses: ./.github/actions/docsearch-crawl
       env:
         CONFIG: "{\"index_name\":\"CheatSheets\",\"start_urls\":[{\"url\":\"https://pfongkye.github.io/\",\"tags\":[\"docs\"]}],\"sitemap_urls\":[\"https://pfongkye.github.io/sitemap.xml\"],\"sitemap_alternate_links\":true,\"stop_urls\":[\"/help\",\"/users\", \"/blog\"],\"selectors\":{\"lvl0\":{\"selector\":\".menu__link--sublist.menu__link--active\",\"global\":true,\"default_value\":\"Documentation\"},\"lvl1\":\"header h1\",\"lvl2\":\"article h2\",\"lvl3\":\"article h3\",\"lvl4\":\"article h4\",\"lvl5\":\"article h5\",\"lvl6\":\"article h6\",\"text\":\"article p, article li\"},\"selectors_exclude\":[\".hash-link\"]}"
         APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
         API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
-      with:
-        who-to-greet: 'Mona the Octocat'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
