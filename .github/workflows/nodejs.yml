@@ -2,12 +2,11 @@ name: Node.js CI
 
 on:
   push:
-    branches: 
+    branches:
       - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,25 +14,30 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: | 
-        git config --global user.email "p.fongkye@users.noreply.github.com"
-        git config --global user.name "p.fongkye"
-        echo "machine github.com login p.fongkye password $GIT_PERSO_TOKEN" > ~/.netrc
-        npm run deploy
-      env:
-        CI: true
-        GIT_USER: p.fongkye
-        GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
-    - name: Docsearch crawl
-      id: hello
-      uses: ./.github/actions/docsearch-crawl
-      env:
-        CONFIG: "{\"index_name\":\"CheatSheets\",\"start_urls\":[{\"url\":\"https://pfongkye.github.io/\",\"tags\":[\"docs\"]}],\"sitemap_urls\":[\"https://pfongkye.github.io/sitemap.xml\"],\"sitemap_alternate_links\":true,\"stop_urls\":[\"/help\",\"/users\", \"/blog\"],\"selectors\":{\"lvl0\":{\"selector\":\".menu__link--sublist.menu__link--active\",\"global\":true,\"default_value\":\"Documentation\"},\"lvl1\":\"header h1\",\"lvl2\":\"article h2\",\"lvl3\":\"article h3\",\"lvl4\":\"article h4\",\"lvl5\":\"article h5\",\"lvl6\":\"article h6\",\"text\":\"article p, article li\"},\"selectors_exclude\":[\".hash-link\"]}"
-        APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
-        API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: |
+          git config --global user.email "p.fongkye@users.noreply.github.com"
+          git config --global user.name "p.fongkye"
+          echo "machine github.com login p.fongkye password $GIT_PERSO_TOKEN" > ~/.netrc
+          npm run deploy
+        env:
+          CI: true
+          GIT_USER: p.fongkye
+          GIT_PERSO_TOKEN: ${{ secrets.GIT_PERSO_TOKEN }}
+      - name: Docsearch crawl
+        id: crawl
+        uses: ./.github/actions/docsearch-crawl
+        env:
+          CONFIG: '{"index_name":"CheatSheets","start_urls":[{"url":"https://pfongkye.github.io/","tags":["docs"]}],"sitemap_urls":["https://pfongkye.github.io/sitemap.xml"],"sitemap_alternate_links":true,"stop_urls":["/help","/users", "/blog"],"selectors":{"lvl0":{"selector":".menu__link--sublist.menu__link--active","global":true,"default_value":"Documentation"},"lvl1":"header h1","lvl2":"article h2","lvl3":"article h3","lvl4":"article h4","lvl5":"article h5","lvl6":"article h6","text":"article p, article li"},"selectors_exclude":[".hash-link"]}'
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_CRAWL_API_KEY }}
+          with:
+            who-to-greet: 'PFK'
+        # Use the output from the `crawl` step
+        - name: Get the output time
+          run: echo "The time was ${{ steps.crawl.outputs.time }}"
