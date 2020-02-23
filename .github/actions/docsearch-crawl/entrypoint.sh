@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
-echo "Hello $1"
 cd /root
-pipenv run python -m src.index
+echo "Hello $1"
 time=$(date)
 echo ::set-output name=time::$time
+pipenv run python -m src.index
