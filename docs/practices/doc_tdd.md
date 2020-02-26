@@ -5,7 +5,7 @@ title: Test Driven Development
 
 ## Summary
 
-To review (TDD by example by Kent Beck):
+To review (Kent Beck's TDD By Example):
 
 - Red/Green/Refactor cycle
 - Test first (Red)
