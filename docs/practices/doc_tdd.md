@@ -27,4 +27,4 @@ TDD done right should help:
 - reduce debugging time
 - produce reliable documentation from written tests
 - improve code design (decoupling...)
-- allow confident refactoring (suite tests acts as a parachute)
+- refactor code confidently (suite tests acts as a parachute)
