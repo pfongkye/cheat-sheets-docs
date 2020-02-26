@@ -21,3 +21,10 @@ To review (TDD by example by Kent Beck):
 - Tests should show intent
 - Refactor code and tests
 - Emergent design
+
+TDD done right should help:
+
+- reduce debugging time
+- produce reliable documentation from written tests
+- improve code design (decoupling...)
+- allow confident refactoring (suite tests acts as a parachute)
