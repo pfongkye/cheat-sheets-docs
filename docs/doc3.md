@@ -27,3 +27,6 @@ git update-index --chmod=+x <file>
 ```
 ## Repl.it
 [repl.it talk](https://repl.it/talk/all)
+
+## Jest
+[Parameterized tests](https://jestjs.io/docs/en/api#testeachtablename-fn-timeout)
