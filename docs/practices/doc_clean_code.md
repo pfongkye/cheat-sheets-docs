@@ -15,3 +15,7 @@ Names should:
 ## Design Patterns
 
 A design pattern is a named solution to a problem in a given context.
+
+One of the primary goals of software development is independent deployability.
+
+Dependency management helps achieve this goal. 
