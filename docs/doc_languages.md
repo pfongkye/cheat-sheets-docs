@@ -15,3 +15,5 @@ sidebar_label: Languages
 [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
 
 [30 seconds of code](https://www.30secondsofcode.org/)
+
+[Illustrated web development](https://illustrated.dev/)
