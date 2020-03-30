@@ -10,6 +10,7 @@ title: Interactive Learning
 ## Live Training
 ### Creating Robust React Applications with Redux
 The source code [example](https://github.com/shaunwa/redux-todos-example)
+
 Some ideas :
  - react-persist to keep state in local storage for example
  - reselect for selectors
