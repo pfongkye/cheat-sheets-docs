@@ -36,3 +36,6 @@ git update-index --chmod=+x <file>
 
 ## React
 [React with Typescript](https://github.com/microsoft/TypeScript-React-Starter)
+
+## Modeling Software Architecture
+[C4 model](https://c4model.com/)
