@@ -11,21 +11,22 @@ module.exports = {
       title: "My Cheat Sheets",
       logo: {
         alt: "My Site Logo",
-        src: "img/logo.svg"
+        src: "img/logo.svg",
       },
       links: [
         { to: "docs/doc_web", label: "Docs", position: "left" },
+        { to: "playground", label: "Playground", position: "left" },
         {
           href: "https://github.com/pfongkye/cheat-sheets-docs",
           label: "GitHub",
-          position: "right"
-        }
-      ]
+          position: "right",
+        },
+      ],
     },
     algolia: {
       apiKey: "8a95fdfff7c5a485cfc279a9503a6287",
       appId: "QAUJU0D39R",
-      indexName: "CheatSheets"
+      indexName: "CheatSheets",
     },
     footer: {
       style: "dark",
@@ -35,39 +36,39 @@ module.exports = {
           items: [
             {
               label: "Cheat Sheets",
-              to: "docs/doc_web"
-            }
-          ]
+              to: "docs/doc_web",
+            },
+          ],
         },
         {
           title: "Community",
           items: [
             {
               label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus"
+              href: "https://stackoverflow.com/questions/tagged/docusaurus",
             },
             {
               label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus"
-            }
-          ]
+              href: "https://discordapp.com/invite/docusaurus",
+            },
+          ],
         },
         {
           title: "Social",
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/pfongkye/cheat-sheets-docs"
+              href: "https://github.com/pfongkye/cheat-sheets-docs",
             },
             {
               label: "Twitter",
-              href: "https://twitter.com/docusaurus"
-            }
-          ]
-        }
+              href: "https://twitter.com/docusaurus",
+            },
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`
-    }
+      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+    },
   },
   presets: [
     [
@@ -75,12 +76,12 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/pfongkye/cheat-sheets-docs/edit/master/"
+          editUrl: "https://github.com/pfongkye/cheat-sheets-docs/edit/master/",
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css")
-        }
-      }
-    ]
-  ]
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
+  ],
 };
