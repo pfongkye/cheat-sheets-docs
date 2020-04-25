@@ -2,6 +2,9 @@
 /* A ruleset is comprised of a selector and a declaration block */
 /* Notation for specificity, e.g. 1,2,2 indicates specificity of one ID, two classes and two tags */
 /* Don't use IDs nor !important (there can be exceptions in some rare cases)*/
+.page-header {
+  font-family: sans-serif;
+}
 h1 {
   color: #2f4f4f;
   margin-bottom: 10px;

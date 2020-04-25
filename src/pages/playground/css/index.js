@@ -12,7 +12,7 @@ export default function CssPlayground() {
         <nav>
           <ul id="main-nav" className="nav">
             <li>
-              <a href="../playground">Home</a>
+              <a href="../">Home</a>
             </li>
             <li>
               <a href="teas">Teas</a>
