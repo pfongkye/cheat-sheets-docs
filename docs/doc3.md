@@ -33,3 +33,12 @@ git update-index --chmod=+x <file>
 
 ## Glitch 
 [Remote collaboration](https://glitch.com/) 
+
+## React
+[React with Typescript](https://github.com/microsoft/TypeScript-React-Starter)
+
+## Modeling Software Architecture
+[C4 model](https://c4model.com/)
+
+## Service Virtualization
+[Mountebank](http://www.mbtest.org/)
