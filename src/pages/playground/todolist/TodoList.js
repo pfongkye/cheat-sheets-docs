@@ -5,6 +5,10 @@ const StyledTodoList = styled.div`
   color: blue;
 `;
 
+const Todo = styled.div`
+  color: green;
+`;
+
 export default function TodoList() {
   const [todoValue, setTodoValue] = useState("");
   const [todoItems, setTodoItems] = useState([]);
@@ -22,13 +26,16 @@ export default function TodoList() {
     <StyledTodoList>
       My Todo List
       <label>
-        Add Todo: <input value={todoValue} onChange={handleChange} />
+        Todo: <input value={todoValue} onChange={handleChange} />
       </label>
       <button onClick={handleAdd}>Add</button>
       <div>
-        {todoItems.map((item, i) => (
-          <span key={`todo-${i}`}>{item}</span>
-        ))}
+        {todoItems.length > 0 && <span>My active todos:</span>}
+        <div>
+          {todoItems.map((item, i) => (
+            <Todo key={`todo-${i}`}>{item}</Todo>
+          ))}
+        </div>
       </div>
     </StyledTodoList>
   );

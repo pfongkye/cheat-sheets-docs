@@ -25,14 +25,33 @@ describe("TodoList", () => {
     expectAddTodo(input, "My first todo", getByText).toBeInTheDocument();
     expectAddTodo(input, "My second todo", getByText).toBeInTheDocument();
   });
+
+  it("should not show active todos when no todo", () => {
+    const { queryByText } = render(<TodoList />);
+
+    expect(queryByText("My active todos:")).not.toBeInTheDocument();
+  });
+
+  it("should show active todos when todo is added", () => {
+    const { getByText, getByLabelText } = render(<TodoList />);
+
+    const input = getAddTodoInput(getByLabelText);
+
+    addTodo(input, "My first todo", getByText);
+    expect(getByText("My active todos:")).toBeInTheDocument();
+  });
 });
 
 function getAddTodoInput(getByLabelText) {
-  return getByLabelText("Add Todo:", { selector: "input" });
+  return getByLabelText("Todo:", { selector: "input" });
 }
 
 function expectAddTodo(input, value, getByText) {
+  addTodo(input, value, getByText);
+  return expect(getByText(value));
+}
+
+function addTodo(input, value, getByText) {
   fireEvent.change(input, { target: { value } });
   fireEvent.click(getByText("Add"));
-  return expect(getByText(value));
 }
