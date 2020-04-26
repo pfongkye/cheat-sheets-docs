@@ -41,7 +41,7 @@ describe("TodoList", () => {
     expect(getByText("My active todos:")).toBeInTheDocument();
   });
 
-  it("should complete one todo", async () => {
+  it("should complete one todo", (done) => {
     const todo = "my todo";
     const { getByText, getByLabelText, queryByText } = render(<TodoList />);
 
@@ -51,12 +51,12 @@ describe("TodoList", () => {
 
     completeTodo(getByLabelText, todo);
 
-    await waitFor(() => {
+    waitFor(() => {
       expect(queryByText("My active todos:")).not.toBeInTheDocument();
-    });
+    }).then(done);
   });
 
-  it("should complete second todo and leave first one active", async () => {
+  it("should complete second todo and leave first one active", done => {
     const firstTodo = "first todo",
       secondTodo = "second todo";
 
@@ -69,10 +69,10 @@ describe("TodoList", () => {
 
     completeTodo(getByLabelText, secondTodo);
 
-    await waitFor(() => {
+    waitFor(() => {
       expect(queryByText(secondTodo)).not.toBeInTheDocument();
       expect(getByText(firstTodo)).toBeInTheDocument();
-    });
+    }).then(done);
   });
 });
 
