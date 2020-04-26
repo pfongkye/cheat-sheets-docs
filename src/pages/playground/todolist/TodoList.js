@@ -45,7 +45,7 @@ export default function TodoList() {
 
   return (
     <StyledTodoList>
-      My Todo List
+      <h3>My Todo List</h3>
       <label>
         Todo: <input value={value} onChange={handleChange} />
       </label>
