@@ -1,39 +1,60 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Todo from "./Todo";
+
+class TodoEntity {
+  constructor(value) {
+    this.value = value;
+    this.isCompleted = false;
+  }
+
+  setCompleted() {
+    this.isCompleted = true;
+  }
+
+  getIsCompleted() {
+    return this.isCompleted;
+  }
+}
 
 const StyledTodoList = styled.div`
   color: blue;
 `;
 
-const Todo = styled.div`
-  color: green;
-`;
+function isItemActive(item) {
+  return !item.getIsCompleted();
+}
 
 export default function TodoList() {
-  const [todoValue, setTodoValue] = useState("");
+  const [value, setValue] = useState("");
   const [todoItems, setTodoItems] = useState([]);
 
   function handleAdd() {
-    setTodoItems([...todoItems, todoValue]);
-    setTodoValue("");
+    setTodoItems([...todoItems, new TodoEntity(value)]);
+    setValue("");
   }
 
   function handleChange(e) {
-    setTodoValue(e.target.value);
+    setValue(e.target.value);
+  }
+
+  function handleComplete(item) {
+    todoItems.find((i) => i.value === item.value).setCompleted(true);
+    setTodoItems([...todoItems]);
   }
 
   return (
     <StyledTodoList>
       My Todo List
       <label>
-        Todo: <input value={todoValue} onChange={handleChange} />
+        Todo: <input value={value} onChange={handleChange} />
       </label>
       <button onClick={handleAdd}>Add</button>
       <div>
-        {todoItems.length > 0 && <span>My active todos:</span>}
+        {todoItems.findIndex(isItemActive) !== -1 && <span>My active todos:</span>}
         <div>
-          {todoItems.map((item, i) => (
-            <Todo key={`todo-${i}`}>{item}</Todo>
+          {todoItems.filter(isItemActive).map((item, i) => (
+            <Todo key={`todo-${i}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import TodoList from "playground/todolist/TodoList";
@@ -40,7 +40,45 @@ describe("TodoList", () => {
     addTodo(input, "My first todo", getByText);
     expect(getByText("My active todos:")).toBeInTheDocument();
   });
+
+  it("should complete one todo", async () => {
+    const todo = "my todo";
+    const { getByText, getByLabelText, queryByText } = render(<TodoList />);
+
+    const todoInput = getAddTodoInput(getByLabelText);
+
+    addTodo(todoInput, todo, getByText);
+
+    completeTodo(getByLabelText, todo);
+
+    await waitFor(() => {
+      expect(queryByText("My active todos:")).not.toBeInTheDocument();
+    });
+  });
+
+  it("should complete one todo and have one active", async () => {
+    const firstTodo = "first todo",
+      secondTodo = "second todo";
+
+    const { getByText, getByLabelText, queryByText } = render(<TodoList />);
+
+    const todoInput = getAddTodoInput(getByLabelText);
+
+    addTodo(todoInput, firstTodo, getByText);
+    addTodo(todoInput, secondTodo, getByText);
+
+    completeTodo(getByLabelText, secondTodo);
+
+    await waitFor(() => {
+      expect(queryByText("second todo")).not.toBeInTheDocument();
+      // expect(getByText("first todo")).toBeInTheDocument();
+    });
+  });
 });
+
+function completeTodo(getByLabelText, todo) {
+  fireEvent.click(getByLabelText(todo, { selector: "input" }));
+}
 
 function getAddTodoInput(getByLabelText) {
   return getByLabelText("Todo:", { selector: "input" });
