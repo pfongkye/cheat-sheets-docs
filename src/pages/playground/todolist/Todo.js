@@ -10,7 +10,7 @@ export default function ({ todo, onComplete }) {
     <StyledTodo>
       <label>
         <input type="checkbox" onClick={() => onComplete(todo)} />
-        {todo.value}
+        {todo && todo.value}
       </label>
     </StyledTodo>
   );
