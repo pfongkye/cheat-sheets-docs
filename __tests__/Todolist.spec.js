@@ -74,6 +74,28 @@ describe("TodoList", () => {
       expect(getByText(firstTodo)).toBeInTheDocument();
     });
   });
+
+  it("should complete both todos independently even if they have same value", async () => {
+    const duplicatedTodo = "duplicated todo";
+
+    const { getByText, getByLabelText, queryByText, getAllByLabelText } = render(<TodoList />);
+
+    const todoInput = getAddTodoInput(getByLabelText);
+
+    addTodo(todoInput, duplicatedTodo, getByText);
+    addTodo(todoInput, duplicatedTodo, getByText);
+
+    //since two todos of same value, we need to get all the todos...
+    const todos = getAllByLabelText(duplicatedTodo, { selector: "input" });
+    fireEvent.click(todos[0]);
+
+    //afterwards we need to query again and not use the previous todos since DOM changed.
+    completeTodo(getByLabelText, duplicatedTodo);
+
+    await waitFor(() => {
+      expect(queryByText(duplicatedTodo)).not.toBeInTheDocument();
+    });
+  });
 });
 
 function completeTodo(getByLabelText, todo) {

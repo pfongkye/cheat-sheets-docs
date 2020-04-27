@@ -6,6 +6,7 @@ class TodoEntity {
   constructor(value) {
     this.value = value;
     this.isCompleted = false;
+    this.Id = Date.now();
   }
 
   setCompleted() {
@@ -39,7 +40,7 @@ export default function TodoList() {
   }
 
   function handleComplete(item) {
-    todoItems.find((i) => i.value === item.value).setCompleted(true);
+    todoItems.find((i) => i.Id === item.Id).setCompleted(true);
     setTodoItems([...todoItems]);
   }
 
