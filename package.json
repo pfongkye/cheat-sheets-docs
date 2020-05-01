@@ -12,7 +12,7 @@
   },
   "jest": {
     "modulePaths": [
-      "<rootDir>/src/pages"
+      "<rootDir>/src/components"
     ]
   },
   "dependencies": {

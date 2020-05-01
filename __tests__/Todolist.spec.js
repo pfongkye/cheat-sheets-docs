@@ -2,7 +2,7 @@ import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-import TodoList from "playground/todolist/TodoList";
+import TodoList from "todolist/TodoList";
 describe("TodoList", () => {
   it("should display TodoList", () => {
     const { getByText } = render(<TodoList />);
