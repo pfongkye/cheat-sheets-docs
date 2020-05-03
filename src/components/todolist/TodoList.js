@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import styled from "styled-components";
 import Todo from "./Todo";
 
@@ -26,12 +26,23 @@ function isItemActive(item) {
   return !item.getIsCompleted();
 }
 
+const initialState = [];
+function reducer(state, action) {
+  switch (action[0]) {
+    case "ADD_TODO":
+      return [action[1], ...state];
+    case "COMPLETE_TODO":
+      return [...state.filter((i) => i.Id !== action[1])];
+    default:
+      return state;
+  }
+}
 export default function TodoList() {
   const [value, setValue] = useState("");
-  const [todoItems, setTodoItems] = useState([]);
+  const [todoItems, dispatch] = useReducer(reducer, initialState);
 
   function handleAdd() {
-    setTodoItems([...todoItems, new TodoEntity(value)]);
+    dispatch(["ADD_TODO", new TodoEntity(value)]);
     setValue("");
   }
 
@@ -40,8 +51,7 @@ export default function TodoList() {
   }
 
   function handleComplete(item) {
-    todoItems.find((i) => i.Id === item.Id).setCompleted(true);
-    setTodoItems([...todoItems]);
+    dispatch(["COMPLETE_TODO", item.Id]);
   }
 
   return (
@@ -52,9 +62,9 @@ export default function TodoList() {
       </label>
       <button onClick={handleAdd}>Add</button>
       <div>
-        {todoItems.findIndex(isItemActive) !== -1 && <span>My active todos:</span>}
+        {todoItems.length > 0 && <span>My active todos:</span>}
         <div>
-          {todoItems.filter(isItemActive).map((item, i) => (
+          {todoItems.map((item, i) => (
             <Todo key={`todo-${i}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
