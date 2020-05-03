@@ -1,8 +1,9 @@
 import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-
 import TodoList from "todolist/TodoList";
+import TestRenderer from "react-test-renderer";
+
 describe("TodoList", () => {
   it("should display TodoList", () => {
     const { getByText } = render(<TodoList />);
@@ -86,24 +87,30 @@ describe("TodoList", () => {
     addTodo(todoInput, duplicatedTodo, getByText);
 
     //since two todos of same value, we need to get all the todos...
-    const todos = getAllByLabelText(duplicatedTodo, { selector: "input" });
-    fireEvent.click(todos[0]);
-
-    //afterwards we need to query again and not use the previous todos since DOM changed.
+    fireEvent.click(getAllByLabelText(duplicatedTodo)[0]);
+    //and we need to query DOM again since the latter changed
     completeTodo(getByLabelText, duplicatedTodo);
 
     await waitFor(() => {
       expect(queryByText(duplicatedTodo)).not.toBeInTheDocument();
     });
   });
+
+  it("should match snapshot", () => {
+    expect.assertions(1);
+
+    const container = TestRenderer.create(<TodoList />);
+
+    expect(container.toJSON()).toMatchSnapshot();
+  });
 });
 
 function completeTodo(getByLabelText, todo) {
-  fireEvent.click(getByLabelText(todo, { selector: "input" }));
+  fireEvent.click(getByLabelText(todo));
 }
 
 function getAddTodoInput(getByLabelText) {
-  return getByLabelText("Todo:", { selector: "input" });
+  return getByLabelText("Todo:");
 }
 
 function expectAddTodo(input, value, getByText) {

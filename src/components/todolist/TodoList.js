@@ -5,26 +5,13 @@ import Todo from "./Todo";
 class TodoEntity {
   constructor(value) {
     this.value = value;
-    this.isCompleted = false;
     this.Id = Date.now();
-  }
-
-  setCompleted() {
-    this.isCompleted = true;
-  }
-
-  getIsCompleted() {
-    return this.isCompleted;
   }
 }
 
 const StyledTodoList = styled.div`
   color: blue;
 `;
-
-function isItemActive(item) {
-  return !item.getIsCompleted();
-}
 
 const initialState = [];
 function reducer(state, action) {
