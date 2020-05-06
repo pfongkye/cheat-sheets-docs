@@ -6,84 +6,88 @@ import TestRenderer from "react-test-renderer";
 
 describe("TodoList", () => {
   it("should display TodoList", () => {
-    const { getByText } = render(<TodoList />);
+    render(<TodoList />);
 
-    expect(getByText("My Todo List")).toBeInTheDocument();
+    expect(screen.getByText("My Todo List")).toBeInTheDocument();
   });
 
   it("should add a todo item and clear input value", () => {
-    const { getByText, getByLabelText } = render(<TodoList />);
-    const input = getAddTodoInput(getByLabelText);
+    render(<TodoList />);
+    const input = getAddTodoInput();
 
-    expectAddTodo(input, "My first todo", getByText).toBeInTheDocument();
-    expect(input.value).toEqual("");
+    expectAddTodo(input, "My first todo").toBeInTheDocument();
+    expect(input).toHaveValue("");
   });
 
   it("should add two todo items", () => {
-    const { getByText, getByLabelText } = render(<TodoList />);
-    const input = getAddTodoInput(getByLabelText);
+    render(<TodoList />);
+    const input = getAddTodoInput();
 
-    expectAddTodo(input, "My first todo", getByText).toBeInTheDocument();
-    expectAddTodo(input, "My second todo", getByText).toBeInTheDocument();
+    expectAddTodo(input, "My first todo").toBeInTheDocument();
+    expectAddTodo(input, "My second todo").toBeInTheDocument();
   });
 
   it("should not show active todos when no todo", () => {
-    const { queryByText } = render(<TodoList />);
+    render(<TodoList />);
 
-    expect(queryByText("My active todos:")).not.toBeInTheDocument();
+    expect(screen.queryByText("My active todos:")).not.toBeInTheDocument();
   });
 
   it("should show active todos when todo is added", () => {
-    const { getByText, getByLabelText } = render(<TodoList />);
+    render(<TodoList />);
 
-    const input = getAddTodoInput(getByLabelText);
+    const input = getAddTodoInput();
 
-    addTodo(input, "My first todo", getByText);
-    expect(getByText("My active todos:")).toBeInTheDocument();
+    addTodo(input, "My first todo");
+    expect(screen.getByText("My active todos:")).toBeInTheDocument();
   });
 
   it("should complete one todo", async () => {
     const todo = "my todo";
-    const { getByText, getByLabelText, queryByText } = render(<TodoList />);
 
-    const todoInput = getAddTodoInput(getByLabelText);
+    render(<TodoList />);
 
-    addTodo(todoInput, todo, getByText);
+    const todoInput = getAddTodoInput();
 
-    completeTodo(getByLabelText, todo);
+    addTodo(todoInput, todo);
+
+    completeTodo(todo);
 
     await waitFor(() => {
-      expect(queryByText("My active todos:")).not.toBeInTheDocument();
+      expect(screen.queryByText("My active todos:")).not.toBeInTheDocument();
     });
   });
 
-  it("should complete second todo", async () => {
+  it.each([
+    ["first todo", "second todo"],
+    ["second todo", "first todo"],
+  ])("should complete %s", async (toCompleteTodo, remainingTodo) => {
     const firstTodo = "first todo",
       secondTodo = "second todo";
 
-    const { getByText, getByLabelText, queryByText } = render(<TodoList />);
+    render(<TodoList />);
 
-    const todoInput = getAddTodoInput(getByLabelText);
+    const todoInput = getAddTodoInput();
 
-    addTodo(todoInput, firstTodo, getByText);
-    addTodo(todoInput, secondTodo, getByText);
+    addTodo(todoInput, firstTodo);
+    addTodo(todoInput, secondTodo);
 
-    completeTodo(getByLabelText, secondTodo);
+    completeTodo(toCompleteTodo);
 
     await waitFor(() => {
-      expect(queryByText(secondTodo)).not.toBeInTheDocument();
-      const firstTodoElement = screen.getByLabelText(firstTodo);
-      expect(firstTodoElement).not.toBeChecked();
-      expect(firstTodoElement).toBeInTheDocument();
+      expect(screen.queryByText(toCompleteTodo)).not.toBeInTheDocument();
+      const todoElt = screen.getByLabelText(remainingTodo);
+      expect(todoElt).toBeInTheDocument();
+      expect(todoElt).not.toBeChecked();
     });
   });
 
   it("should complete both todos independently even if they have same value", async () => {
     const duplicatedTodo = "duplicated todo";
 
-    const { getByText, getByLabelText, queryByText, getAllByLabelText } = render(<TodoList />);
+    const { getByText, queryByText, getAllByLabelText } = render(<TodoList />);
 
-    const todoInput = getAddTodoInput(getByLabelText);
+    const todoInput = getAddTodoInput();
 
     addTodo(todoInput, duplicatedTodo, getByText);
     addTodo(todoInput, duplicatedTodo, getByText);
@@ -91,7 +95,7 @@ describe("TodoList", () => {
     //since two todos of same value, we need to get all the todos...
     fireEvent.click(getAllByLabelText(duplicatedTodo)[0]);
     //and we need to query DOM again since the latter changed
-    completeTodo(getByLabelText, duplicatedTodo);
+    completeTodo(duplicatedTodo);
 
     await waitFor(() => {
       expect(queryByText(duplicatedTodo)).not.toBeInTheDocument();
@@ -107,20 +111,20 @@ describe("TodoList", () => {
   });
 });
 
-function completeTodo(getByLabelText, todo) {
-  fireEvent.click(getByLabelText(todo));
+function completeTodo(todo) {
+  fireEvent.click(screen.getByLabelText(todo));
 }
 
-function getAddTodoInput(getByLabelText) {
-  return getByLabelText("Todo:");
+function getAddTodoInput() {
+  return screen.getByLabelText("Todo:");
 }
 
-function expectAddTodo(input, value, getByText) {
-  addTodo(input, value, getByText);
-  return expect(getByText(value));
+function expectAddTodo(input, value) {
+  addTodo(input, value);
+  return expect(screen.getByText(value));
 }
 
-function addTodo(input, value, getByText) {
+function addTodo(input, value) {
   fireEvent.change(input, { target: { value } });
-  fireEvent.click(getByText("Add"));
+  fireEvent.click(screen.getByText("Add"));
 }
