@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import TodoList from "todolist/TodoList";
 import TestRenderer from "react-test-renderer";
@@ -57,7 +57,7 @@ describe("TodoList", () => {
     });
   });
 
-  it("should complete second todo and leave first one active", async () => {
+  it("should complete second todo", async () => {
     const firstTodo = "first todo",
       secondTodo = "second todo";
 
@@ -72,7 +72,9 @@ describe("TodoList", () => {
 
     await waitFor(() => {
       expect(queryByText(secondTodo)).not.toBeInTheDocument();
-      expect(getByText(firstTodo)).toBeInTheDocument();
+      const firstTodoElement = screen.getByLabelText(firstTodo);
+      expect(firstTodoElement).not.toBeChecked();
+      expect(firstTodoElement).toBeInTheDocument();
     });
   });
 

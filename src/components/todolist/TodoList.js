@@ -52,7 +52,7 @@ export default function TodoList() {
         {todoItems.length > 0 && <span>My active todos:</span>}
         <div>
           {todoItems.map((item, i) => (
-            <Todo key={`todo-${i}`} todo={item} onComplete={handleComplete} />
+            <Todo key={`todo-${item.Id}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
       </div>
