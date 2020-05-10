@@ -14,35 +14,33 @@ const StyledTodoList = styled.div`
   height: 25vh;
 `;
 
-const initialState = { todos: [] };
+const initialState = { todos: [], currentValue: "" };
 function reducer(state, action) {
   switch (action[0]) {
+    case "CHANGE_TODO_VALUE":
+      return { ...state, currentValue: action[1] };
     case "ADD_TODO":
-      return { todos: [action[1], ...state.todos] };
+      return { ...state, todos: [action[1], ...state.todos] };
     case "COMPLETE_TODO":
-      return { todos: [...state.todos.filter((i) => i.Id !== action[1])] };
+      return { ...state, todos: [...state.todos.filter((i) => i.Id !== action[1])] };
     default:
       return state;
   }
 }
 export default function TodoList() {
-  const [value, setValue] = useState("");
-  const [todoList, dispatch] = useReducer(reducer, initialState);
+  const [{ currentValue, todos }, dispatch] = useReducer(reducer, initialState);
 
-  function handleAdd() {
-    dispatch(["ADD_TODO", new TodoEntity(value)]);
-    setValue("");
+  function addTodo() {
+    dispatch(["ADD_TODO", new TodoEntity(currentValue)]);
+    dispatch(["CHANGE_TODO_VALUE", ""]);
   }
 
   function handleChange(e) {
-    setValue(e.target.value);
+    dispatch(["CHANGE_TODO_VALUE", e.target.value]);
   }
 
   function handleKeyUp(e) {
-    if (e.key === "Enter") {
-      dispatch(["ADD_TODO", new TodoEntity(e.target.value)]);
-      setValue("");
-    }
+    e.key === "Enter" && addTodo();
   }
 
   function handleComplete(item) {
@@ -53,13 +51,13 @@ export default function TodoList() {
     <StyledTodoList>
       <h3>My Todo List</h3>
       <label>
-        Todo: <input value={value} onChange={handleChange} onKeyUp={handleKeyUp} />
+        Todo: <input value={currentValue} onChange={handleChange} onKeyUp={handleKeyUp} />
       </label>
-      <button onClick={handleAdd}>Add</button>
+      <button onClick={addTodo}>Add</button>
       <div>
-        {todoList.todos.length > 0 && <span>My active todos:</span>}
+        {todos.length > 0 && <span>My active todos:</span>}
         <div>
-          {todoList.todos.map((item) => (
+          {todos.map((item) => (
             <Todo key={`todo-${item.Id}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
