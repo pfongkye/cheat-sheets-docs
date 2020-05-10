@@ -11,7 +11,7 @@ class TodoEntity {
 
 const StyledTodoList = styled.div`
   color: blue;
-  height: 25vh;
+  min-height: 25vh;
 `;
 
 const initialState = { todos: [], currentValue: "" };
