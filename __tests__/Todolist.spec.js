@@ -102,12 +102,18 @@ describe("TodoList", () => {
     });
   });
 
-  it("should match snapshot", () => {
-    expect.assertions(1);
+  it("should add todo on [ENTER]", async () => {
+    expect.assertions(2);
 
-    const container = TestRenderer.create(<TodoList />);
+    render(<TodoList />);
 
-    expect(container.toJSON()).toMatchSnapshot();
+    const input = screen.getByLabelText("Todo:");
+    fireEvent.input(input, { target: { value: "my todo" } });
+    fireEvent.keyUp(input, { key: "Enter", code: "Enter" });
+    await waitFor(() => {
+      expect(screen.getByText("my todo")).toBeInTheDocument();
+    });
+    expect(input).toHaveValue("");
   });
 });
 

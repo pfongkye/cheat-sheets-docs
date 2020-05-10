@@ -11,22 +11,23 @@ class TodoEntity {
 
 const StyledTodoList = styled.div`
   color: blue;
+  height: 25vh;
 `;
 
-const initialState = [];
+const initialState = { todos: [] };
 function reducer(state, action) {
   switch (action[0]) {
     case "ADD_TODO":
-      return [action[1], ...state];
+      return { todos: [action[1], ...state.todos] };
     case "COMPLETE_TODO":
-      return [...state.filter((i) => i.Id !== action[1])];
+      return { todos: [...state.todos.filter((i) => i.Id !== action[1])] };
     default:
       return state;
   }
 }
 export default function TodoList() {
   const [value, setValue] = useState("");
-  const [todoItems, dispatch] = useReducer(reducer, initialState);
+  const [todoList, dispatch] = useReducer(reducer, initialState);
 
   function handleAdd() {
     dispatch(["ADD_TODO", new TodoEntity(value)]);
@@ -37,6 +38,13 @@ export default function TodoList() {
     setValue(e.target.value);
   }
 
+  function handleKeyUp(e) {
+    if (e.key === "Enter") {
+      dispatch(["ADD_TODO", new TodoEntity(e.target.value)]);
+      setValue("");
+    }
+  }
+
   function handleComplete(item) {
     dispatch(["COMPLETE_TODO", item.Id]);
   }
@@ -45,13 +53,13 @@ export default function TodoList() {
     <StyledTodoList>
       <h3>My Todo List</h3>
       <label>
-        Todo: <input value={value} onChange={handleChange} />
+        Todo: <input value={value} onChange={handleChange} onKeyUp={handleKeyUp} />
       </label>
       <button onClick={handleAdd}>Add</button>
       <div>
-        {todoItems.length > 0 && <span>My active todos:</span>}
+        {todoList.todos.length > 0 && <span>My active todos:</span>}
         <div>
-          {todoItems.map((item) => (
+          {todoList.todos.map((item) => (
             <Todo key={`todo-${item.Id}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
