@@ -31,8 +31,10 @@ export default function TodoList() {
   const [{ currentValue, todos }, dispatch] = useReducer(reducer, initialState);
 
   function addTodo() {
-    dispatch(["ADD_TODO", new TodoEntity(currentValue)]);
-    dispatch(["CHANGE_TODO_VALUE", ""]);
+    if (currentValue) {
+      dispatch(["ADD_TODO", new TodoEntity(currentValue)]);
+      dispatch(["CHANGE_TODO_VALUE", ""]);
+    }
   }
 
   function handleChange(e) {

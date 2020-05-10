@@ -102,6 +102,18 @@ describe("TodoList", () => {
     });
   });
 
+  it("should not add todo if empty on [ENTER]", async () => {
+    expect.assertions(1);
+
+    render(<TodoList />);
+    const input = screen.getByLabelText("Todo:");
+    fireEvent.keyUp(input, { key: "Enter", code: "Enter" });
+
+    await waitFor(() => {
+      expect(screen.queryByLabelText("")).not.toBeInTheDocument();
+    });
+  });
+
   it("should add todo on [ENTER]", async () => {
     expect.assertions(2);
 
