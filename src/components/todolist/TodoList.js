@@ -1,11 +1,11 @@
-import React, { useState, useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import styled from "styled-components";
 import Todo from "./Todo";
 
-class TodoEntity {
+export class TodoEntity {
   constructor(value) {
     this.value = value;
-    this.Id = Date.now();
+    this.id = Date.now();
   }
 }
 
@@ -15,30 +15,41 @@ const StyledTodoList = styled.div`
 `;
 
 const initialState = { todos: [], currentValue: "" };
+
+const CHANGE_TODO_VALUE = "CHANGE_TODO_VALUE",
+  ADD_TODOS = "ADD_TODOS",
+  COMPLETE_TODO = "COMPLETE_TODO";
+
 function reducer(state, action) {
   switch (action[0]) {
-    case "CHANGE_TODO_VALUE":
+    case CHANGE_TODO_VALUE:
       return { ...state, currentValue: action[1] };
-    case "ADD_TODO":
-      return { ...state, todos: [action[1], ...state.todos] };
-    case "COMPLETE_TODO":
-      return { ...state, todos: [...state.todos.filter((i) => i.Id !== action[1])] };
+    case ADD_TODOS:
+      return { ...state, todos: [...state.todos, ...action[1]] };
+    case COMPLETE_TODO:
+      return { ...state, todos: [...state.todos.filter((i) => i.id !== action[1])] };
     default:
       return state;
   }
 }
-export default function TodoList() {
+export default function TodoList({ todoService }) {
   const [{ currentValue, todos }, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    if (todoService) {
+      todoService.getTodos().then((res) => dispatch([ADD_TODOS, res]));
+    }
+  }, []);
 
   function addTodo() {
     if (currentValue) {
-      dispatch(["ADD_TODO", new TodoEntity(currentValue)]);
-      dispatch(["CHANGE_TODO_VALUE", ""]);
+      dispatch([ADD_TODOS, [new TodoEntity(currentValue)]]);
+      dispatch([CHANGE_TODO_VALUE, ""]);
     }
   }
 
   function handleChange(e) {
-    dispatch(["CHANGE_TODO_VALUE", e.target.value]);
+    dispatch([CHANGE_TODO_VALUE, e.target.value]);
   }
 
   function handleKeyUp(e) {
@@ -46,7 +57,7 @@ export default function TodoList() {
   }
 
   function handleComplete(item) {
-    dispatch(["COMPLETE_TODO", item.Id]);
+    dispatch([COMPLETE_TODO, item.id]);
   }
 
   return (
@@ -60,7 +71,7 @@ export default function TodoList() {
         {todos.length > 0 && <span>My active todos:</span>}
         <div>
           {todos.map((item) => (
-            <Todo key={`todo-${item.Id}`} todo={item} onComplete={handleComplete} />
+            <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
           ))}
         </div>
       </div>
