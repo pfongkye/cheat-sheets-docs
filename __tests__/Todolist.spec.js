@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import TodoList from "todolist/TodoList";
+import TodoList, { TodoEntity } from "todolist/TodoList";
 
 describe("TodoList", () => {
   it("should display TodoList", () => {
@@ -125,6 +125,18 @@ describe("TodoList", () => {
       expect(screen.getByText("my todo")).toBeInTheDocument();
     });
     expect(input).toHaveValue("");
+  });
+
+  it("should load initial data", async () => {
+    expect.assertions(2);
+    const todoService = { getTodos: jest.fn() };
+    todoService.getTodos.mockResolvedValueOnce([{ value: "my initial todo", id: "id" }]);
+    render(<TodoList todoService={todoService} />);
+
+    expect(todoService.getTodos).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(screen.getByText("my initial todo")).toBeInTheDocument();
+    });
   });
 });
 
