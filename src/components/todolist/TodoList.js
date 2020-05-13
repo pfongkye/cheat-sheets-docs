@@ -43,8 +43,12 @@ export default function TodoList({ todoService }) {
 
   function addTodo() {
     if (currentValue) {
-      dispatch([ADD_TODOS, [new TodoEntity(currentValue)]]);
+      const todo = new TodoEntity(currentValue);
+      dispatch([ADD_TODOS, [todo]]);
       dispatch([CHANGE_TODO_VALUE, ""]);
+      if (todoService) {
+        todoService.save(todo);
+      }
     }
   }
 
