@@ -2,7 +2,6 @@ import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import TodoList from "todolist/TodoList";
-import TestRenderer from "react-test-renderer";
 
 describe("TodoList", () => {
   it("should display TodoList", () => {
