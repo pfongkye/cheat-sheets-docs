@@ -12,18 +12,16 @@ describe("TodoList", () => {
 
   it("should add a todo item and clear input value", () => {
     render(<TodoList />);
-    const input = getAddTodoInput();
 
-    expectAddTodo(input, "My first todo").toBeInTheDocument();
-    expect(input).toHaveValue("");
+    expectAddTodo("My first todo").toBeInTheDocument();
+    expect(getAddTodoInput()).toHaveValue("");
   });
 
   it("should add two todo items", () => {
     render(<TodoList />);
-    const input = getAddTodoInput();
 
-    expectAddTodo(input, "My first todo").toBeInTheDocument();
-    expectAddTodo(input, "My second todo").toBeInTheDocument();
+    expectAddTodo("My first todo").toBeInTheDocument();
+    expectAddTodo("My second todo").toBeInTheDocument();
   });
 
   it("should not show active todos when no todo", () => {
@@ -35,9 +33,7 @@ describe("TodoList", () => {
   it("should show active todos when todo is added", () => {
     render(<TodoList />);
 
-    const input = getAddTodoInput();
-
-    addTodo(input, "My first todo");
+    addTodo("My first todo");
     expect(screen.getByText("My active todos:")).toBeInTheDocument();
   });
 
@@ -46,9 +42,7 @@ describe("TodoList", () => {
 
     render(<TodoList />);
 
-    const todoInput = getAddTodoInput();
-
-    addTodo(todoInput, todo);
+    addTodo(todo);
 
     completeTodo(todo);
 
@@ -66,10 +60,8 @@ describe("TodoList", () => {
 
     render(<TodoList />);
 
-    const todoInput = getAddTodoInput();
-
-    addTodo(todoInput, firstTodo);
-    addTodo(todoInput, secondTodo);
+    addTodo(firstTodo);
+    addTodo(secondTodo);
 
     completeTodo(toCompleteTodo);
 
@@ -84,12 +76,10 @@ describe("TodoList", () => {
   it("should complete both todos independently even if they have same value", async () => {
     const duplicatedTodo = "duplicated todo";
 
-    const { getByText, queryByText, getAllByLabelText } = render(<TodoList />);
+    const { queryByText, getAllByLabelText } = render(<TodoList />);
 
-    const todoInput = getAddTodoInput();
-
-    addTodo(todoInput, duplicatedTodo, getByText);
-    addTodo(todoInput, duplicatedTodo, getByText);
+    addTodo(duplicatedTodo);
+    addTodo(duplicatedTodo);
 
     //since two todos of same value, we need to get all the todos...
     fireEvent.click(getAllByLabelText(duplicatedTodo)[0]);
@@ -128,15 +118,23 @@ describe("TodoList", () => {
   });
 
   it("should load initial data", async () => {
-    expect.assertions(2);
     const todoService = { getTodos: jest.fn() };
     todoService.getTodos.mockResolvedValueOnce([{ value: "my initial todo", id: "id" }]);
     render(<TodoList todoService={todoService} />);
 
-    expect(todoService.getTodos).toHaveBeenCalledTimes(1);
-    await waitFor(() => {
-      expect(screen.getByText("my initial todo")).toBeInTheDocument();
-    });
+    await waitFor(() => expect(todoService.getTodos).toHaveBeenCalledTimes(1));
+    expect(screen.getByText("my initial todo")).toBeInTheDocument();
+  });
+
+  it("should save todo on add", async () => {
+    const todoService = { save: jest.fn(), getTodos: jest.fn() };
+    todoService.getTodos.mockResolvedValueOnce([]);
+    render(<TodoList todoService={todoService} />);
+
+    await waitFor(() => expect(todoService.getTodos).toHaveBeenCalledTimes(1));
+    addTodo("my saved todo");
+
+    expect(todoService.save).toHaveBeenNthCalledWith(1, expect.objectContaining({ value: "my saved todo" }));
   });
 });
 
@@ -148,12 +146,12 @@ function getAddTodoInput() {
   return screen.getByLabelText("Todo:");
 }
 
-function expectAddTodo(input, value) {
-  addTodo(input, value);
+function expectAddTodo(value) {
+  addTodo(value);
   return expect(screen.getByText(value));
 }
 
-function addTodo(input, value) {
-  fireEvent.change(input, { target: { value } });
+function addTodo(value) {
+  fireEvent.change(getAddTodoInput(), { target: { value } });
   fireEvent.click(screen.getByText("Add"));
 }
