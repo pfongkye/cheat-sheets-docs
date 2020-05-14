@@ -24,12 +24,12 @@ describe("localStorageTodoService", () => {
 
   it("should return an array of todos", () => {
     localStorage.getItem.mockImplementationOnce(
-      getMockTodos.bind(null, '[{"value":"my todo", "id":"id"},{"value":"second todo", "id":"id2"}]')
+      getMockTodos.bind(null, '[{"value":"my todo", "id":"id"},{"value":"second todo", "id":"id2", "isDone":true}]')
     );
     const actual = service.getTodos();
     expect(actual).toEqual([
       { value: "my todo", id: "id" },
-      { value: "second todo", id: "id2" },
+      { value: "second todo", id: "id2", isDone: true },
     ]);
   });
 
@@ -56,8 +56,8 @@ describe("localStorageTodoService", () => {
   });
 
   it("should save a todo to empty localstorage item", () => {
-    service.save({ value: "my todo", id: "id" });
-    expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "todos", '[{"value":"my todo","id":"id"}]');
+    service.save({ value: "my todo", id: "id", isDone: false });
+    expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "todos", '[{"value":"my todo","id":"id","isDone":false}]');
   });
 
   it("should save todo to existing localstorage item", () => {

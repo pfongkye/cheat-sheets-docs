@@ -6,6 +6,7 @@ export class TodoEntity {
   constructor(value) {
     this.value = value;
     this.id = Date.now();
+    this.isDone = false;
   }
 }
 
@@ -27,13 +28,14 @@ function reducer(state, action) {
     case ADD_TODOS:
       return { ...state, todos: [...state.todos, ...action[1]] };
     case COMPLETE_TODO:
-      return { ...state, todos: [...state.todos.filter((i) => i.id !== action[1])] };
+      return { ...state, todos: [...state.todos.filter((i) => i.id !== action[1].id), action[1]] };
     default:
       return state;
   }
 }
 export default function TodoList({ todoService }) {
   const [{ currentValue, todos }, dispatch] = useReducer(reducer, initialState);
+  const activeTodos = todos.filter((td) => !td.isDone);
 
   useEffect(() => {
     if (todoService) {
@@ -61,7 +63,7 @@ export default function TodoList({ todoService }) {
   }
 
   function handleComplete(item) {
-    dispatch([COMPLETE_TODO, item.id]);
+    dispatch([COMPLETE_TODO, { ...item, isDone: true }]);
   }
 
   return (
@@ -72,12 +74,12 @@ export default function TodoList({ todoService }) {
       </label>
       <button onClick={addTodo}>Add</button>
       <div>
-        {todos.length > 0 && <span>My active todos:</span>}
-        <div>
-          {todos.map((item) => (
+        {activeTodos.length > 0 && <span>My active todos:</span>}
+        <>
+          {activeTodos.map((item) => (
             <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
           ))}
-        </div>
+        </>
       </div>
     </StyledTodoList>
   );
