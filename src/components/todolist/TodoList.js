@@ -28,13 +28,14 @@ function reducer(state, action) {
     case ADD_TODOS:
       return { ...state, todos: [...state.todos, ...action[1]] };
     case COMPLETE_TODO:
-      return { ...state, todos: [...state.todos.filter((i) => i.id !== action[1])] };
+      return { ...state, todos: [...state.todos.filter((i) => i.id !== action[1].id), action[1]] };
     default:
       return state;
   }
 }
 export default function TodoList({ todoService }) {
   const [{ currentValue, todos }, dispatch] = useReducer(reducer, initialState);
+  const activeTodos = todos.filter((td) => !td.isDone);
 
   useEffect(() => {
     if (todoService) {
@@ -62,8 +63,7 @@ export default function TodoList({ todoService }) {
   }
 
   function handleComplete(item) {
-    item.isDone = true;
-    dispatch([COMPLETE_TODO, item.id]);
+    dispatch([COMPLETE_TODO, { ...item, isDone: true }]);
   }
 
   return (
@@ -74,14 +74,12 @@ export default function TodoList({ todoService }) {
       </label>
       <button onClick={addTodo}>Add</button>
       <div>
-        {todos.filter((item) => !item.isDone).length > 0 && <span>My active todos:</span>}
-        <div>
-          {todos
-            .filter((item) => !item.isDone)
-            .map((item) => (
-              <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
-            ))}
-        </div>
+        {activeTodos.length > 0 && <span>My active todos:</span>}
+        <>
+          {activeTodos.map((item) => (
+            <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
+          ))}
+        </>
       </div>
     </StyledTodoList>
   );
