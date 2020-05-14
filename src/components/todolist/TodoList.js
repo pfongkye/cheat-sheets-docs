@@ -37,7 +37,7 @@ export default function TodoList({ todoService }) {
 
   useEffect(() => {
     if (todoService) {
-      todoService.getTodos().then((res) => dispatch([ADD_TODOS, res]));
+      dispatch([ADD_TODOS, todoService.getTodos()]);
     }
   }, []);
 
