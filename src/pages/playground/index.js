@@ -9,9 +9,6 @@ export default function () {
         <nav>
           <ul id="main-nav">
             <li>
-              <a href="playground/css">CSS</a>
-            </li>
-            <li>
               <a href="playground/todolist">TodoList</a>
             </li>
           </ul>
