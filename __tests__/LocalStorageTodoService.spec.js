@@ -1,5 +1,5 @@
 import * as React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 import LocalStorageTodoService from "todolist/LocalStorageTodoService";
@@ -41,28 +41,28 @@ describe("localStorageTodoService", () => {
   });
 
   it("should not save undefined todo", () => {
-    service.saveTodo();
+    service.save();
     expect(localStorage.setItem).not.toHaveBeenCalled();
   });
 
   it("should not save todo if no value", () => {
-    service.saveTodo({ id: "id" });
+    service.save({ id: "id" });
     expect(localStorage.setItem).not.toHaveBeenCalled();
   });
 
   it("should not save todo if no id", () => {
-    service.saveTodo({ value: "my todo" });
+    service.save({ value: "my todo" });
     expect(localStorage.setItem).not.toHaveBeenCalled();
   });
 
   it("should save a todo to empty localstorage item", () => {
-    service.saveTodo({ value: "my todo", id: "id" });
+    service.save({ value: "my todo", id: "id" });
     expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "todos", '[{"value":"my todo","id":"id"}]');
   });
 
   it("should save todo to existing localstorage item", () => {
     localStorage.getItem.mockImplementationOnce(getMockTodos.bind(null, '[{"value":"my todo", "id":"id"}]'));
-    service.saveTodo({ value: "my new todo", id: "id1" });
+    service.save({ value: "my new todo", id: "id1" });
 
     expect(localStorage.getItem).toHaveBeenCalledTimes(1);
     expect(localStorage.setItem).toHaveBeenNthCalledWith(
@@ -74,9 +74,17 @@ describe("localStorageTodoService", () => {
 
   it("should overwrite todo to existing localstorage item", () => {
     localStorage.getItem.mockImplementationOnce(getMockTodos.bind(null, '[{"value":"my todo", "id":"id"}]'));
-    service.saveTodo({ value: "my new todo", id: "id" });
+    service.save({ value: "my new todo", id: "id" });
 
     expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "todos", '[{"value":"my new todo","id":"id"}]');
+  });
+
+  it("should save todo on add", () => {
+    render(<TodoList todoService={service} />);
+    const input = screen.getByLabelText("Todo:");
+    fireEvent.change(input, { target: { value: "my todo" } });
+    fireEvent.click(screen.getByText("Add"));
+    expect(localStorage.setItem).toHaveBeenNthCalledWith(1, "todos", expect.stringContaining('"value":"my todo"'));
   });
 });
 function getMockTodos(todos, key) {

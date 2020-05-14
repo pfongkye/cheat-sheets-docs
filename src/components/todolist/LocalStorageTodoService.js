@@ -9,7 +9,7 @@ export default class LocalStorageTodoService {
     }
     return [];
   }
-  saveTodo(todo) {
+  save(todo) {
     if (todo && todo.value && todo.id) {
       const todos = this.getTodos().filter((td) => td.id !== todo.id);
       this.localStorage.setItem("todos", JSON.stringify([...todos, todo]));
