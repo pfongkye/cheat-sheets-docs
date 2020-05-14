@@ -1,7 +1,7 @@
 import React from "react";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import TodoList, { TodoEntity } from "todolist/TodoList";
+import TodoList from "todolist/TodoList";
 
 describe("TodoList", () => {
   it("should display TodoList", () => {
@@ -117,21 +117,21 @@ describe("TodoList", () => {
     expect(input).toHaveValue("");
   });
 
-  it("should load initial data", async () => {
+  it("should load initial data", () => {
     const todoService = { getTodos: jest.fn() };
-    todoService.getTodos.mockResolvedValueOnce([{ value: "my initial todo", id: "id" }]);
+    todoService.getTodos.mockReturnValueOnce([{ value: "my initial todo", id: "id" }]);
     render(<TodoList todoService={todoService} />);
 
-    await waitFor(() => expect(todoService.getTodos).toHaveBeenCalledTimes(1));
+    expect(todoService.getTodos).toHaveBeenCalledTimes(1);
     expect(screen.getByText("my initial todo")).toBeInTheDocument();
   });
 
-  it("should save todo on add", async () => {
+  it("should save todo on add", () => {
     const todoService = { save: jest.fn(), getTodos: jest.fn() };
-    todoService.getTodos.mockResolvedValueOnce([]);
+    todoService.getTodos.mockReturnValueOnce([]);
     render(<TodoList todoService={todoService} />);
 
-    await waitFor(() => expect(todoService.getTodos).toHaveBeenCalledTimes(1));
+    expect(todoService.getTodos).toHaveBeenCalledTimes(1);
     addTodo("my saved todo");
 
     expect(todoService.save).toHaveBeenNthCalledWith(1, expect.objectContaining({ value: "my saved todo" }));
