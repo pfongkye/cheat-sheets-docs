@@ -43,14 +43,18 @@ export default function TodoList({ todoService }) {
     }
   }, []);
 
+  function saveTodo(todo) {
+    if (todoService) {
+      todoService.save(todo);
+    }
+  }
+
   function addTodo() {
     if (currentValue) {
       const todo = new TodoEntity(currentValue);
       dispatch([ADD_TODOS, [todo]]);
       dispatch([CHANGE_TODO_VALUE, ""]);
-      if (todoService) {
-        todoService.save(todo);
-      }
+      saveTodo(todo);
     }
   }
 
@@ -63,7 +67,9 @@ export default function TodoList({ todoService }) {
   }
 
   function handleComplete(item) {
-    dispatch([COMPLETE_TODO, { ...item, isDone: true }]);
+    const completedTodo = { ...item, isDone: true };
+    dispatch([COMPLETE_TODO, completedTodo]);
+    saveTodo(completedTodo);
   }
 
   return (

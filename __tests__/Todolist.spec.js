@@ -149,6 +149,23 @@ describe("TodoList", () => {
 
     expect(todoService.save).toHaveBeenNthCalledWith(1, expect.objectContaining({ value: "my saved todo" }));
   });
+
+  it("should save todo when done", () => {
+    todoService.getTodos.mockReturnValueOnce([]);
+    render(<TodoList todoService={todoService} />);
+
+    addTodo("my new todo");
+    expect(todoService.save).toHaveBeenNthCalledWith(
+      1,
+      expect.objectContaining({ value: "my new todo", isDone: false })
+    );
+
+    completeTodo("my new todo");
+    expect(todoService.save).toHaveBeenNthCalledWith(
+      2,
+      expect.objectContaining({ value: "my new todo", isDone: true })
+    );
+  });
 });
 
 function completeTodo(todo) {
