@@ -4,6 +4,12 @@ import "@testing-library/jest-dom/extend-expect";
 import TodoList from "todolist/TodoList";
 
 describe("TodoList", () => {
+  const todoService = { save: jest.fn(), getTodos: jest.fn() };
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
+
   it("should display TodoList", () => {
     render(<TodoList />);
 
@@ -118,7 +124,6 @@ describe("TodoList", () => {
   });
 
   it("should load initial data", () => {
-    const todoService = { getTodos: jest.fn() };
     todoService.getTodos.mockReturnValueOnce([{ value: "my initial todo", id: "id" }]);
     render(<TodoList todoService={todoService} />);
 
@@ -126,8 +131,16 @@ describe("TodoList", () => {
     expect(screen.getByText("my initial todo")).toBeInTheDocument();
   });
 
+  it("should show completed todo when loading todos", () => {
+    todoService.getTodos.mockReturnValueOnce([{ value: "my completed todo", id: "id", isDone: true }]);
+    render(<TodoList todoService={todoService} />);
+
+    expect(todoService.getTodos).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText("my completed todo")).not.toBeInTheDocument();
+    expect(screen.queryByText("My active todos:")).not.toBeInTheDocument();
+  });
+
   it("should save todo on add", () => {
-    const todoService = { save: jest.fn(), getTodos: jest.fn() };
     todoService.getTodos.mockReturnValueOnce([]);
     render(<TodoList todoService={todoService} />);
 

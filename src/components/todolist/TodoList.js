@@ -6,6 +6,7 @@ export class TodoEntity {
   constructor(value) {
     this.value = value;
     this.id = Date.now();
+    this.isDone = false;
   }
 }
 
@@ -61,6 +62,7 @@ export default function TodoList({ todoService }) {
   }
 
   function handleComplete(item) {
+    item.isDone = true;
     dispatch([COMPLETE_TODO, item.id]);
   }
 
@@ -72,11 +74,13 @@ export default function TodoList({ todoService }) {
       </label>
       <button onClick={addTodo}>Add</button>
       <div>
-        {todos.length > 0 && <span>My active todos:</span>}
+        {todos.filter((item) => !item.isDone).length > 0 && <span>My active todos:</span>}
         <div>
-          {todos.map((item) => (
-            <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
-          ))}
+          {todos
+            .filter((item) => !item.isDone)
+            .map((item) => (
+              <Todo key={`todo-${item.id}`} todo={item} onComplete={handleComplete} />
+            ))}
         </div>
       </div>
     </StyledTodoList>
