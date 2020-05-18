@@ -42,3 +42,10 @@ git update-index --chmod=+x <file>
 
 ## Service Virtualization
 [Mountebank](http://www.mbtest.org/)
+
+## API versioning
+* Follow semver specifications
+* Robustness principle (Postel's Law)
+* 2 options for REST major versioning
+  - prefixed URL '/v1/...'
+  - HTTP's content negotiation mechanism
