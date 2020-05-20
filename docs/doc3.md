@@ -49,3 +49,6 @@ git update-index --chmod=+x <file>
 * 2 options for REST major versioning
   - prefixed URL '/v1/...'
   - HTTP's content negotiation mechanism
+  
+## In-Depth Articles
+[inDepth](https://indepth.dev/)
