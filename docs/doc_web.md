@@ -16,6 +16,9 @@ A cheat sheet on Web.
 
 [How to center in CSS](http://howtocenterincss.com/)
 
+## Service Workers
+[Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
+
 ## Miscellaneous
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
