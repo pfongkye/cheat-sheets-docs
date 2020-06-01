@@ -19,6 +19,9 @@ A cheat sheet on Web.
 ## Service Workers
 [Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
 
+## Application Holotypes
+[Some tips to build types of web apps](https://jasonformat.com/application-holotypes/)
+
 ## Miscellaneous
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
