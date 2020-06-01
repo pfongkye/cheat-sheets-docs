@@ -17,3 +17,7 @@ sidebar_label: Languages
 [30 seconds of code](https://www.30secondsofcode.org/)
 
 [Illustrated web development](https://illustrated.dev/)
+
+[2ality JavaScript](https://2ality.com/index.html)
+
+[Smashing Magazine](https://www.smashingmagazine.com/)
