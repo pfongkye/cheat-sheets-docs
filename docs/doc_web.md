@@ -21,6 +21,8 @@ A cheat sheet on Web.
 
 [Is Houdini ready yet?](https://ishoudinireadyyet.com/)
 
+[Houdini Samples](https://googlechromelabs.github.io/houdini-samples/)
+
 ## Service Workers
 [Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
 
