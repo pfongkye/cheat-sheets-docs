@@ -23,6 +23,9 @@ A cheat sheet on Web.
 
 [Houdini Samples](https://googlechromelabs.github.io/houdini-samples/)
 
+## React
+[React in depth](https://indepth.dev/react)
+
 ## Service Workers
 [Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
 
