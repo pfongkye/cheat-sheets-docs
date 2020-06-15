@@ -52,3 +52,6 @@ git update-index --chmod=+x <file>
   
 ## In-Depth Articles
 [inDepth](https://indepth.dev/)
+
+## Spoken Languages
+[IPA](https://www.ipachart.com/)
