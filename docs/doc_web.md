@@ -14,6 +14,8 @@ A cheat sheet on Web.
 
 ## CSS
 
+[Learn CSS](https://www.smashingmagazine.com/2019/01/how-to-learn-css/) 
+
 [How to center in CSS](http://howtocenterincss.com/)
 
 [Grid by example](https://gridbyexample.com/)
