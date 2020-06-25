@@ -12,6 +12,8 @@ A cheat sheet on Web.
 
 [web.dev](https://web.dev/)
 
+[HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+
 ## CSS
 
 [Learn CSS](https://www.smashingmagazine.com/2019/01/how-to-learn-css/) 
