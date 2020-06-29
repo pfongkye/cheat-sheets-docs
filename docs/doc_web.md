@@ -22,6 +22,8 @@ A cheat sheet on Web.
 
 [Grid by example](https://gridbyexample.com/)
 
+[Shapes of CSS](https://css-tricks.com/the-shapes-of-css/)
+
 ### Houdini
 [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini)
 
