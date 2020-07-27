@@ -33,6 +33,7 @@ A cheat sheet on Web.
 
 ## React
 [React in depth](https://indepth.dev/react)
+[React with Typescript](https://github.com/microsoft/TypeScript-React-Starter)
 
 ## Service Workers
 [Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
