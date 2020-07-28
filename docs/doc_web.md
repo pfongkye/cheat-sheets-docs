@@ -14,7 +14,7 @@ A cheat sheet on Web.
 
 [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 
-[CORS] (https://dev.to/lydiahallie/cs-visualized-cors-5b8h) 
+[CORS](https://dev.to/lydiahallie/cs-visualized-cors-5b8h) 
 
 ## CSS
 
