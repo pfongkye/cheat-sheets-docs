@@ -26,6 +26,8 @@ A cheat sheet on Web.
 
 [Shapes of CSS](https://css-tricks.com/the-shapes-of-css/)
 
+[One-line CSS layouts](https://1linelayouts.glitch.me/) 
+
 ### Houdini
 [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini)
 
