@@ -28,6 +28,8 @@ A cheat sheet on Web.
 
 [One-line CSS layouts](https://1linelayouts.glitch.me/) 
 
+[Space in Design System](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
+
 ### Houdini
 [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini)
 
@@ -37,6 +39,7 @@ A cheat sheet on Web.
 
 ## React
 [React in depth](https://indepth.dev/react)
+
 [React with Typescript](https://github.com/microsoft/TypeScript-React-Starter)
 
 ## Service Workers
