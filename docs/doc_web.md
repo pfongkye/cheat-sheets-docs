@@ -16,6 +16,12 @@ A cheat sheet on Web.
 
 [CORS](https://dev.to/lydiahallie/cs-visualized-cors-5b8h) 
 
+## Jamstack
+
+A [Jamstack](https://jamstack.org/) site is one which does not depend on a web server.
+
+[Static site generator.](https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/)
+
 ## CSS
 
 [Learn CSS](https://www.smashingmagazine.com/2019/01/how-to-learn-css/) 
