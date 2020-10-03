@@ -6,6 +6,11 @@ title: Interactive Learning
 ## Katacoda
 [katacoda playground](https://www.katacoda.com/)
 
+## Coding Game
+[Coding game](https://www.codingame.com/) 
+
+## Free Code Camp
+[Free code camp](https://www.freecodecamp.org/) 
 
 ## Live Training
 ### Creating Robust React Applications with Redux
