@@ -58,6 +58,9 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 ## Application Holotypes
 [Some tips to build types of web apps](https://jasonformat.com/application-holotypes/)
 
+## Patterns
+[The PRPL Pattern](https://addyosmani.com/blog/the-prpl-pattern/) 
+
 ## Miscellaneous
 
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
