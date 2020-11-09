@@ -13,10 +13,9 @@ module.exports = {
         alt: "My Site Logo",
         src: "img/logo.svg",
       },
-      items: [
+      links: [
         { to: "docs/doc_web", label: "Docs", position: "left" },
         { to: "playground", label: "Playground", position: "left" },
-        { href:"resume.html", label: "Resume", position: "left" },
         {
           href: "https://github.com/pfongkye/cheat-sheets-docs",
           label: "GitHub",
