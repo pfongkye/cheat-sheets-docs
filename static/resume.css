@@ -1,0 +1,16 @@
+:root {
+    box-sizing: border-box;
+}
+
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+header {
+    display: flex;
+    gap: 0.3em;
+}
+
+header>p {
+    margin: 0;
+}
