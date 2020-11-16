@@ -63,4 +63,7 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 
 ## Miscellaneous
 
+### SSO
+SAML (Security Assertion Markup Language) enables Single-Sign On. 
+
 You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
