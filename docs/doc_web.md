@@ -63,6 +63,10 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 ## Patterns
 [The PRPL Pattern](https://addyosmani.com/blog/the-prpl-pattern/) 
 
+## Vitals
+
+[RAIL](https://web.dev/rail/) Performance model
+
 ## Miscellaneous
 
 ### SSO
