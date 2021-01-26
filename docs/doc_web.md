@@ -67,6 +67,10 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 
 [RAIL](https://web.dev/rail/) Performance model
 
+## PHP, Symfony and its ecosystem
+
+[Symfony](https://symfony.com/)
+
 ## Miscellaneous
 
 ### SSO
