@@ -54,6 +54,9 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 
 [React with Typescript](https://github.com/microsoft/TypeScript-React-Starter)
 
+[React introductory handbook](
+https://www.freecodecamp.org/news/react-beginner-handbook/) 
+
 ## Service Workers
 [Small HTML payloads with service workers](https://philipwalton.com/articles/smaller-html-payloads-with-service-workers/)
 
