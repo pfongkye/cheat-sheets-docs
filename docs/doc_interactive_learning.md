@@ -4,6 +4,7 @@ title: Interactive Learning
 ---
 
 ## Practice makes perfect
+
 [katacoda playground](https://www.katacoda.com/)
 
 [Coding game](https://www.codingame.com/) 
@@ -11,6 +12,8 @@ title: Interactive Learning
 [Free code camp](https://www.freecodecamp.org/) 
 
 [Code Wars](https://www.codewars.com/dashboard) 
+
+[Google codelabs](https://codelabs.developers.google.com/)
 
 ## Live Training
 ### Creating Robust React Applications with Redux
