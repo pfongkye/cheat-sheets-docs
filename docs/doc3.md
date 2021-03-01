@@ -8,6 +8,9 @@ title: Miscellaneous
 ```cmd
 python -m SimpleHTTPServer <port>
 ```
+## Markdown
+
+A [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) cheat sheet.
 
 ## GitHub Workflow
 
