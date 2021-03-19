@@ -79,6 +79,9 @@ https://courses.davidl.fr/presentations/react-native-design-system/#/)
 
 ## Miscellaneous
 
+### Anki
+[Anki cards](https://docs.ankiweb.net/) which help in memorization.
+
 ### SSO
 SAML (Security Assertion Markup Language) enables Single-Sign On. 
 
