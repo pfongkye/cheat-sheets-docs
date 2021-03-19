@@ -1,16 +1,90 @@
 :root {
     box-sizing: border-box;
+    --highlight-color: #41b3b3;
 }
 
 *, ::before, ::after {
     box-sizing: inherit;
 }
 
-header {
-    display: flex;
-    gap: 0.3em;
+body {
+    display: grid;
+    grid-template-columns: 33% auto;
+    grid-template-areas: "aside header" "aside main";
+    font-family: "Times New Roman", Times, serif;
 }
 
-header>p {
-    margin: 0;
+aside {
+    grid-area: aside;
+    margin-right: 1em;
+    background-color: var(--highlight-color);
+    color: white;
+}
+
+aside>section {
+    padding: 0 2em 0 .5em;
+}
+
+aside h4 {
+    text-transform: uppercase;
+}
+
+aside ul:not(.list-skills) {
+    list-style-type: none;
+    padding-left: 1em;
+}
+
+aside li+li {
+    margin-top: .5em;
+}
+
+header {
+    grid-area: header;
+    margin-right: 1em;
+}
+
+main {
+    grid-area: main;
+    padding-bottom: 2em;
+    margin-right: 1em;
+}
+
+.profile-picture {
+    width: 100%;
+    padding: 1.5em;
+    border-radius: 50%;
+}
+
+.profile-name {
+    text-align: center;
+    font-size: 2em;
+}
+
+.title {
+    text-transform: uppercase;
+    color: var(--highlight-color);
+}
+
+.work-period {
+    color: grey;
+    font-style: italic;
+}
+
+.work-period+* {
+    margin-top: .2em;
+}
+
+.icon-list>li {
+    display: grid;
+    grid-template-columns: fit-content(10%) auto;
+    gap: 0.5em;
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.proprietary-icon {
+    width: 18px;
+    fill: white;
 }
