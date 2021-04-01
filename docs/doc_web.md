@@ -10,6 +10,8 @@ A cheat sheet on Web.
 
 ## Links
 
+[dev docs](https://devdocs.io/)
+
 [Web rendering terminology](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
 
 [web.dev](https://web.dev/)
