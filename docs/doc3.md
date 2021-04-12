@@ -55,3 +55,6 @@ git update-index --chmod=+x <file>
 
 ## Spoken Languages
 [IPA](https://www.ipachart.com/)
+
+## 12-factor app
+Some [principles](https://12factor.net/) to take into account when developing applications. 
