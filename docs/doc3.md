@@ -3,6 +3,9 @@ id: doc_misc
 title: Miscellaneous
 ---
 
+## Career ladder
+
+Some advice on what to have to be at some [engineering level](https://career-ladders.dev/engineering/) 
 ## SimpleHTTPServer
 
 ```cmd
