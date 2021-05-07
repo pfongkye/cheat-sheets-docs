@@ -3,6 +3,8 @@ id: doc_misc
 title: Miscellaneous
 ---
 
+## Mitigate the feeling of being overwhelmed
+Try the [bullet journal](https://bulletjournal.com/blogs/bulletjournalist/mental-inventory)
 ## Career ladder
 
 Some advice on what to have to be at some [engineering level](https://career-ladders.dev/engineering/) 
