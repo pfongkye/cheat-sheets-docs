@@ -15,6 +15,8 @@ title: Interactive Learning
 
 [Google codelabs](https://codelabs.developers.google.com/)
 
+[Project Euler](https://projecteuler.net/)
+
 ## Live Training
 ### Creating Robust React Applications with Redux
 The source code [example](https://github.com/shaunwa/redux-todos-example)
