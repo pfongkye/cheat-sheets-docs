@@ -58,6 +58,8 @@ git update-index --chmod=+x <file>
 ## In-Depth Articles
 [inDepth](https://indepth.dev/)
 
+[System design](https://www-freecodecamp-org.cdn.ampproject.org/v/s/www.freecodecamp.org/news/systems-design-for-interviews/amp/?amp_js_v=a6&amp_gsa=1&usqp=mq331AQKKAFQArABIIACAw%3D%3D#aoh=16249052126251&referrer=https%3A%2F%2Fwww.google.com&amp_tf=Source%C2%A0%3A%20%251%24s&ampshare=https%3A%2F%2Fwww.freecodecamp.org%2Fnews%2Fsystems-design-for-interviews%2F) 
+
 ## Spoken Languages
 [IPA](https://www.ipachart.com/)
 
