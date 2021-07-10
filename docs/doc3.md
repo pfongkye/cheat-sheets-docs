@@ -39,6 +39,9 @@ git update-index --chmod=+x <file>
 ## Jest
 [Parameterized tests](https://jestjs.io/docs/en/api#testeachtablename-fn-timeout)
 
+## Build a URL shortener
+[Example](https://www.freecodecamp.org/news/building-a-simple-url-shortener-with-just-html-and-javascript-6ea1ecda308c/) using HTML and JavaScript
+
 ## Glitch 
 [Remote collaboration](https://glitch.com/) 
 
