@@ -26,3 +26,6 @@ Some ideas :
  - reselect for selectors
  - react-testing library
  - Context and useReducer instead of redux library?
+
+### How to conduct a crash course
+An interesting [article](http://gregorriegler.com/2021/07/02/tdd-crash-course-from-the-back-of-the-room.html) on how to drive a TDD learning course. 
