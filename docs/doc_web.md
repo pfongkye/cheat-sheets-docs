@@ -40,6 +40,8 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 
 [Space in Design System](https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62)
 
+[Performance of CSS selectors still irrelevant](https://meiert.com/en/blog/performance-of-css-selectors-2/)
+
 ### Houdini
 [Houdini](https://developer.mozilla.org/en-US/docs/Web/Houdini)
 
