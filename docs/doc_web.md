@@ -20,6 +20,8 @@ A cheat sheet on Web.
 
 [CORS](https://dev.to/lydiahallie/cs-visualized-cors-5b8h) 
 
+[Isomorphic JavaScript](https://medium.com/airbnb-engineering/isomorphic-javascript-the-future-of-web-apps-10882b7a2ebc)
+
 ## Jamstack
 
 A [Jamstack](https://jamstack.org/) site is one which does not depend on a web server.
