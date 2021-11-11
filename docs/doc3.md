@@ -68,3 +68,6 @@ git update-index --chmod=+x <file>
 
 ## 12-factor app
 Some [principles](https://12factor.net/) to take into account when developing applications. 
+
+## Documentation
+[Diataxis framework](https://diataxis.fr/) 
