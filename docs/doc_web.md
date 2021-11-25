@@ -22,6 +22,8 @@ A cheat sheet on Web.
 
 [Isomorphic JavaScript](https://medium.com/airbnb-engineering/isomorphic-javascript-the-future-of-web-apps-10882b7a2ebc)
 
+[Article](https://web.dev/google-search-tools/) on tools to debug issues, like SEO issue.
+
 ## Jamstack
 
 A [Jamstack](https://jamstack.org/) site is one which does not depend on a web server.
