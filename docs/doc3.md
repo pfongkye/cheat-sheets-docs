@@ -71,3 +71,6 @@ Some [principles](https://12factor.net/) to take into account when developing ap
 
 ## Documentation
 [Diataxis framework](https://diataxis.fr/) 
+
+## Work Methods
+[Shape up](https://basecamp.com/shapeup)
