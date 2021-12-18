@@ -17,6 +17,8 @@ title: Interactive Learning
 
 [Project Euler](https://projecteuler.net/)
 
+[Google Fonts Knowledge](https://fonts.google.com/knowledge) 
+
 ## Live Training
 ### Creating Robust React Applications with Redux
 The source code [example](https://github.com/shaunwa/redux-todos-example)
