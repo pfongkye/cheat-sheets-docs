@@ -7,7 +7,9 @@ title: Miscellaneous
 Try the [bullet journal](https://bulletjournal.com/blogs/bulletjournalist/mental-inventory)
 ## Career ladder
 
-Some advice on what to have to be at some [engineering level](https://career-ladders.dev/engineering/) 
+- Some advice on what to have to be at some [engineering level](https://career-ladders.dev/engineering/) 
+- How to [move up](https://dev.to/softchris/a-career-in-devrel-2m75) in your organisation
+
 ## SimpleHTTPServer
 
 ```cmd
