@@ -24,7 +24,7 @@ A cheat sheet on Web.
 
 [Article](https://web.dev/google-search-tools/) on tools to debug issues, like SEO issue.
 
-[Security 101](https://www.troyhunt.com/data-breach-disclosure-101-how-to-succeed-after-youve-failed/) 
+[Data breach 101](https://www.troyhunt.com/data-breach-disclosure-101-how-to-succeed-after-youve-failed/) 
 
 ## Jamstack
 
