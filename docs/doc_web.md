@@ -32,6 +32,8 @@ A [Jamstack](https://jamstack.org/) site is one which does not depend on a web s
 
 [Static site generator.](https://www.netlify.com/blog/2020/04/14/what-is-a-static-site-generator-and-3-ways-to-find-the-best-one/)
 
+[Understanding Rendering](https://bejamas.io/blog/understanding-rendering-in-the-jamstack/)
+
 ## CSS
 
 [Learn CSS](https://www.smashingmagazine.com/2019/01/how-to-learn-css/) 
