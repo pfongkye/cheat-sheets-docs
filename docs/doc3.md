@@ -76,3 +76,6 @@ Some [principles](https://12factor.net/) to take into account when developing ap
 
 ## Work Methods
 [Shape up](https://basecamp.com/shapeup)
+
+## Find popular software 
+[Website](https://www.getapp.com/) used to look for software used by business leaders.
