@@ -21,3 +21,5 @@ sidebar_label: Languages
 [2ality JavaScript](https://2ality.com/index.html)
 
 [Smashing Magazine](https://www.smashingmagazine.com/)
+
+[JavaScript Core](http://dmitrysoshnikov.com/ecmascript/javascript-the-core-2nd-edition/)
